@@ -42,10 +42,34 @@
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
+                <button onclick="disconnect()"> disconnect </button>
             </div>
         </div>
+        <script src="https://mysqljs.com/mysql.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script>
+            function insertDataMysql(){
+                //it's a dummy data
+                // var today = Date.now();
+                alert("insert to mysql");
+                var today = 500;
+                var mysqlCommand = "INSERT INTO temperaturetable (time, temperature) VALUES (" + today + ", 500);";
+                MySql.Execute(
+                    "128.2.136.44",
+                    "rpcs2018",
+                    "rpcsbackend2018",
+                    "Brace_DB",
+                    mysqlCommand
+                    // "show tables;",
+                    ,
+                    function (data) {
+                        alert(JSON.stringify(data,null,2));
+                        // document.getElementById("output").innerHTML = JSON.stringify(data,null,2);
+                    }
+                );
+            }
+        </script>>
     </body>
 </html>
