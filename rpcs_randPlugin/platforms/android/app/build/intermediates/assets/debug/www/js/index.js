@@ -25,6 +25,8 @@
 var blefruitAddress = "E4:B5:55:89:9A:A8"; //sensor team
 var uartServiceUuid;
 var uartCharacteristicUuid;
+var readParams;
+
 
 var connectParams = {
     "address": blefruitAddress
@@ -52,7 +54,7 @@ function insertDataMysql(){
     //it's a dummy data
     // var today = Date.now();
     alert("insert to mysql");
-    var today = 300;
+    var today = getDateTime();
     var mysqlCommand = "INSERT INTO temperaturetable (time, temperature) VALUES (" + today + ", 300);";
     MySql.Execute(
         "128.2.136.44",
@@ -69,9 +71,40 @@ function insertDataMysql(){
     );
 }
 
-
+// The function is used for standard SQL database datetime format (subject to change)
+function getDateTime() {
+    var now     = new Date(); 
+    var year    = now.getFullYear();
+    var month   = now.getMonth()+1; 
+    var day     = now.getDate();
+    var hour    = now.getHours();
+    var minute  = now.getMinutes();
+    var second  = now.getSeconds(); 
+    if(month.toString().length == 1) {
+        var month = '0'+month;
+    }
+    if(day.toString().length == 1) {
+        var day = '0'+day;
+    }   
+    if(hour.toString().length == 1) {
+        var hour = '0'+hour;
+    }
+    if(minute.toString().length == 1) {
+        var minute = '0'+minute;
+    }
+    if(second.toString().length == 1) {
+        var second = '0'+second;
+    }   
+    var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;   
+    return dateTime;
+}
 
 function disconnect(){
+    bluetoothle.unsubscribe(function(s){
+        aler("unsubscribe success " + s);
+    }, function(e){
+        aler("unsubscribe failed " + e);
+    }, readParams);
     bluetoothle.close(function (s){
         alert("close success " + s);
     }, function (e){
@@ -99,6 +132,7 @@ var app = {
           "statusReceiver": false,
           "restoreKey" : "bluetoothleplugin"
         }
+	   alert(getDateTime());
 
         function startScanning (){
              var params2 = {
@@ -155,14 +189,14 @@ var app = {
                             if (s.services[i]["uuid"].charAt(0) == "6"){
                                 uartServiceUuid = s.services[i]["uuid"];
                                 uartCharacteristicUuid = s.services[i]["characteristics"][0]["uuid"];
-
-                                var readParams = {
+                                readParams = {
                                   "address": blefruitAddress,
                                   "service": uartServiceUuid,
                                   "characteristic": uartCharacteristicUuid
                                 };
                                 var buffer = "";
                                 var result = "";
+                                var firstJson = true;
                                 bluetoothle.subscribe(function(s){
                                     if (s.status  == "subscribed"){
                                         alert("subscribe success " + s.status);
@@ -175,6 +209,11 @@ var app = {
                                             result = buffer + stringResultSplit[0];
                                             buffer = stringResultSplit[1];
                                             console.log("subscribe success " + s.status + " : " + result);
+                                            if (!firstJson){
+                                                resultJson = JSON.parse(result);
+                                                console.log("subscribe success " + s.status + " in json: " + resultJson.id);
+                                            }
+                                            firstJson = false;
                                             result = "";
 
                                         }else {
@@ -188,26 +227,8 @@ var app = {
                                 }, function(e){
                                     alert("subscribe failed ");
                                 }, readParams);
-
-                                // bluetoothle.read(function(s){
-                                //     alert("read success ");
-                                // }, function(e){
-                                //     alert("read failed " + e.error + " " + e.message);
-                                // }, readParams);
                             }
                         }
-
-                        // bluetoothle.services(function(s){
-                        //     alert(s.services.toString());
-                        // }, function(e){
-                        //     alert("service failed " + e.error + " " + e.message);
-                        // }, servicesParams);
-
-                        // bluetoothle.read(function(s){
-                        //     alert("read success ");
-                        // }, function(e){
-                        //     alert("read failed " + e.error + " " + e.message);
-                        // }, readParams);
 
                     }, function(e){
                         alert("discover failed")
