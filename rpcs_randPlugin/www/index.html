@@ -51,11 +51,11 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script>
             function insertDataMysql(){
-                //it's a dummy data
-                // var today = Date.now();
                 alert("insert to mysql");
-                var today = 500;
-                var mysqlCommand = "INSERT INTO temperaturetable (time, temperature) VALUES (" + today + ", 500);";
+                var timeStamp = getDateTime();
+                alert("curTimeStamp " + timeStamp);
+                //var mysqlCommand = "select * from patienttable;"
+                var mysqlCommand = "INSERT INTO patienttable ( temperature, humidity, angle, id) VALUES (999, 9, 99, 999)";
                 MySql.Execute(
                     "128.2.136.44",
                     "rpcs2018",

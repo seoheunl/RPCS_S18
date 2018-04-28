@@ -48,7 +48,7 @@ function postRequest (){
     });
 }
 
-function insertDataMysql(){
+/*function insertDataMysql(){
     //it's a dummy data
     // var today = Date.now();
     alert("insert to mysql");
@@ -68,8 +68,9 @@ function insertDataMysql(){
         }
     );
 }
-
+*/
 // The function is used for standard SQL database datetime format (subject to change)
+// "2018-04-25T15:03:51"
 function getDateTime() {
     var now     = new Date(); 
     var year    = now.getFullYear();
@@ -93,7 +94,7 @@ function getDateTime() {
     if(second.toString().length == 1) {
         var second = '0'+second;
     }   
-    var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;   
+    var dateTime = '"'+year+'-'+month+'-'+day+'T'+hour+':'+minute+':'+second+'"';
      return dateTime;
 }
 
@@ -118,14 +119,14 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-        // insertDataMysql()
+        insertDataMysql()
         // postRequest();
         var params = {
           "request": true,
           "statusReceiver": false,
           "restoreKey" : "bluetoothleplugin"
         }
-	alert(getDateTime());
+	//alert(getDateTime());
 
         function startScanning (){
              var params2 = {
