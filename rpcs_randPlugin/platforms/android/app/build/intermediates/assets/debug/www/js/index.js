@@ -50,7 +50,7 @@ function postRequest (){
     });
 }
 
-function insertDataMysql(){
+/*function insertDataMysql(){
     //it's a dummy data
     // var today = Date.now();
     alert("insert to mysql");
@@ -70,8 +70,9 @@ function insertDataMysql(){
         }
     );
 }
-
+*/
 // The function is used for standard SQL database datetime format (subject to change)
+// "2018-04-25T15:03:51"
 function getDateTime() {
     var now     = new Date(); 
     var year    = now.getFullYear();
@@ -125,14 +126,12 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-        // insertDataMysql()
         // postRequest();
         var params = {
           "request": true,
           "statusReceiver": false,
           "restoreKey" : "bluetoothleplugin"
         }
-	   alert(getDateTime());
 
         function startScanning (){
              var params2 = {
@@ -155,6 +154,7 @@ var app = {
                 }
             }, function(e){
                 alert("error " + e);
+                connection.end();
             }, params2);
         }
 
@@ -168,7 +168,6 @@ var app = {
             bluetoothle.hasPermission(function(s){
                 alert("hasPermission " + s.hasPermission);
                 // startScanning();
-                alert("connectParams.address " + connectParams.address);
                 bluetoothle.connect(function(s){
                     alert("connect success");
                     var servicesParams = {
@@ -203,7 +202,6 @@ var app = {
                                     }else {
                                         var bytes = bluetoothle.encodedStringToBytes(s.value);
                                         var stringResult = bluetoothle.bytesToString(bytes); //This should equal Write Hello World
-                                        console.log("Raw string: " + stringResult);
                                         if (stringResult.includes("*")){
                                             var stringResultSplit = stringResult.split("*");
                                             result = buffer + stringResultSplit[0];
@@ -211,7 +209,17 @@ var app = {
                                             console.log("subscribe success " + s.status + " : " + result);
                                             if (!firstJson){
                                                 resultJson = JSON.parse(result);
-                                                console.log("subscribe success " + s.status + " in json: " + resultJson.id);
+                                                var pressureString = resultJson.p;
+                                                var pressureString_converted = "";
+                                                for (var i = 0; i < pressureString.length; i++){
+                                                    if (i != 0){
+                                                        pressureString_converted += ",";
+                                                    }
+                                                    pressureString_converted += (pressureString[i].charCodeAt(0) - 65)*2;
+                                                }
+                                                resultJson.p = pressureString_converted;
+                                                console.log("subscribe success " + s.status + " in json: " + resultJson.p);
+                                                insertDataMysql(resultJson.t, resultJson.h, resultJson.a, 1, resultJson.p);
                                             }
                                             firstJson = false;
                                             result = "";
@@ -229,6 +237,7 @@ var app = {
                                 }, readParams);
                             }
                         }
+
 
                     }, function(e){
                         alert("discover failed")

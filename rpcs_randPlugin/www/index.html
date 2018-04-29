@@ -50,12 +50,10 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script>
-            function insertDataMysql(){
-                //it's a dummy data
-                // var today = Date.now();
-                alert("insert to mysql");
-                var today = 500;
-                var mysqlCommand = "INSERT INTO temperaturetable (time, temperature) VALUES (" + today + ", 500);";
+            function insertDataMysql(t, h, a, i, p){
+                var timeStamp = getDateTime();
+                //var mysqlCommand = "select * from patienttable;"
+                var mysqlCommand = "INSERT INTO patienttable ( temperature, humidity, angle, id, pressure) VALUES (" + t + "," + h + "," + a + "," + i + ",'" + p + "')";
                 MySql.Execute(
                     "128.2.136.44",
                     "rpcs2018",
@@ -65,7 +63,7 @@
                     // "show tables;",
                     ,
                     function (data) {
-                        alert(JSON.stringify(data,null,2));
+                        console.log("mysql insert result " + JSON.stringify(data,null,2));
                         // document.getElementById("output").innerHTML = JSON.stringify(data,null,2);
                     }
                 );
