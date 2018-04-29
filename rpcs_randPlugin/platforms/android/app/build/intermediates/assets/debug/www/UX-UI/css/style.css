@@ -1,0 +1,165 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+ *{margin:0px; padding:0px;}
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.normal {
+	background: #f1faed;
+    width: 31%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+	    position: relative;    overflow: hidden;
+}
+
+.normal1 {
+	background: #f2e6e6;
+    width: 31%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+	    position: relative;   overflow: hidden;
+}
+
+.normal2 {
+	
+    width: 31%;
+    margin: 0 auto;
+    border: 1px solid #ccc; position: relative;   overflow: hidden;
+}
+.normal2 h3{font-size: 26px;
+    margin: -30px 0px 10px 0px;}
+
+body.abnormal {
+	background:#f2e6e6;
+}
+
+.material-icons-size{font-size:50px !important; }
+.footer_all{background:#fff;     padding: 30px 10px 2px;}
+.btn1{    padding: 7px 0px;
+    font-size: 15px;
+    color: #fff;
+    border-radius: 31px; margin-bottom:11px;display:block;     margin-top: 3px; text-align:center;}
+	.border-right{border-right:1px solid #707070;}
+	.deg a{color: #fff;
+    padding: 11px 0px; width:100%;
+    border-radius: 32px;
+    font-size: 24px;}
+	.deg span{       font-size: 28px;
+    display: block;}
+	.voi_img{position:relative;}
+	.voi{    position: absolute;
+    width: 22%;
+    top: 66px;
+    right: 3px;}
+	.setting_icon{    margin-top: -30px;
+    display: block;
+    margin-right: 15px;}
+	.setting_div{    padding: 120px 0px;}
+	.setting_div div{font-weight: bold;
+    font-size: 36px;
+    padding: 12px 0px;
+}
+	
+	.chart_section{background: #ddead0;
+    border-radius: 20px;}
+	.averg{    color: #93eb7d;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 3px solid #93eb7d;
+    padding-bottom: 4px;}
+	.pre{color: #93eb7d;
+    font-size: 22px;
+    font-weight: bold;}
+	.psi_10{color: #000;
+    font-size: 30px;
+    font-weight: bold;}
+	.psi{font-size: 24px;}
+	.avg_psi{    padding: 34px 0px;}
+	.psi_table{    margin: 0px 0px 30px 0px;
+    box-shadow: 0px 9px 10px 2px #ccc;}
+	.padding_red{background: #f23e3e;
+   
+    border-radius: 15px 15px 0px 0px;     box-shadow: 1px 1px 11px 1px #cccccc8a;
+    padding: 20px 0px;}
+	.psi_table table thead tr th{     text-align: center;
+    font-size: 18px;
+    box-shadow: 1px 1px 11px 1px #cccccc8a;}
+	.psi_table table thead tr th span{color:#f23e3e}
+	.psi_table table tbody tr td{ text-align: center;     font-size: 21px;     padding: 32px 0px;}
+	.psi_table table tbody tr td span{    font-size: 40px;    font-weight: bold;}
+	.psi_table table tbody tr td.gr{background:#afed9f}
+	.psi_table table tbody tr td.re{background:#f79292}
+	
+	.setting_div1 div{    margin-bottom: 35px;}
+	.setting_div1 .profile_img{width:36%}
+	.setting_div1 .support_img{width:60%}
+	.setting_div1 h3{    margin: 10px 0px;
+    font-size: 30px;
+    font-weight: bold;}
+	img.responsive-img1
+{
+  width: 70%;
+  height: auto;
+}
+
+img.responsive-img2
+{
+  width: 61%;
+  height: auto;
+}
+.plaease_select{    position: absolute;
+    top: 0px;
+    right: 0px;}
+	
+.left-menu{    background: #fff;
+    position: absolute;
+    width: 40%;
+    padding: 0px 0px;
+    height: 100%;    top:0px; left: -239px;     z-index: 3;}	
+.left-menu ul{}	
+.left-menu ul li{    float: none;
+    line-height: 48px;
+    background: #00000038;
+    margin: 7px 0px;}	
+.left-menu ul li a{color: rgba(0,0,0,0.87);
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 32px;}
+	
+	
+	
+	
+	
+.left-background{    position: absolute;
+    background: #00000038;
+    width: 100%;
+    height: 100%; display:none;     z-index: 2;}	
+
+	@media screen and (min-width:320px) and (max-width:600px){
+		.normal, .normal1, .normal2{width:100%}
+		.btn1{    font-size: 15px;}
+		.deg a{font-size: 19px;}
+		img.responsive-img1 {
+		 width: 174px;}
+	} 
+	
+	@media screen and (min-width:601px) and (max-width:992px){
+		.normal, .normal1, .normal2{width:50%}
+		.btn1{    font-size: 15px;}
+		.deg a{font-size: 19px;}
+		img.responsive-img1 {
+		 width: 174px;}
+	} 
+	

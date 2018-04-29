@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title></title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<div class="normal1">
+  <div class="left-background"></div>
+  <nav class="" role="navigation">
+      <a href="#"" data-activates="nav-mobile" class="nav_class"><i class="material-icons material-icons-size">menu</i></a>
+  </nav>
+  <div class="left-menu">
+    <ul>
+      <li><a class="waves-effect waves-teal" href="profile.html">Profile</a></li>
+      <li><a class="waves-effect waves-teal" href="settings.html">Settings</a></li>
+      <li><a class="waves-effect waves-teal" href="support.html">Support</a></li>
+    </ul>
+  </div>
+ 
+
+
+  <div class="container">
+    <div class="section center-align voi_img">
+	<img class="responsive-img2" src="images/6.jpg" alt="" />
+	<img class="voi"  src="images/voi.jpg" alt="" />
+	</div>
+	</div>
+	<div class="footer_all">
+	<div class="row">
+      <div class="col s4 center-align border-right">
+	  <a href="pressure.html"; class="waves-effect red darken-3 btn1">Pressure</a>
+	  <a href="moisture.html"; class="waves-effect light-green darken-1 btn1">Humidity</a>
+	  </div>
+      <div class="col s4 center-align border-right deg"><a href="temperature.html"; class="waves-effect light-green darken-1"><span><p id="temperature"></p></span> deg F</a></div>
+      <div class="col s4 center-align deg"><a href="posture.html"; class="waves-effect light-green darken-1"><span><p id="angle"></p></span>Posture</a></div>
+    </div>
+	</div>
+  </div>
+
+ 
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="https://mysqljs.com/mysql.js"></script>
+  <script>
+    MySql.Execute(
+        "128.2.136.44",
+        "rpcs2018",
+        "rpcsbackend2018",
+        "Brace_DB",
+        "select * from patienttable order by id DESC limit 1",
+        function (data) {
+          document.getElementById("temperature").innerHTML = data.Result[0].temperature;
+          document.getElementById("angle").innerHTML = data.Result[0].angle + "°";
+        });
+  </script>
+  <script>
+    function myFunction() {
+      location.reload();
+    }
+  </script>
+
+  </body>
+</html>

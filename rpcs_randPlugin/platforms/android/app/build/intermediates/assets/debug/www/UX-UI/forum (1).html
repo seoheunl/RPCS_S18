@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forum Page</title>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+  <v-app id="inspire">
+    <div
+      id="e3"
+      style="max-width: 400px; margin: auto;"
+      class="grey lighten-3"
+    >
+      <v-toolbar color="blue">
+        <v-toolbar-side-icon></v-toolbar-side-icon>
+        <v-toolbar-title class="white--text">Forum</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon>
+          <v-icon>search</v-icon>
+        </v-btn>
+      </v-toolbar>
+      <v-card>
+        <v-container
+          fluid
+          style="min-height: 0;"
+          grid-list-lg
+        >
+          <v-layout row wrap>
+            <v-flex xs12>
+              <v-card color="blue-grey darken-2" class="white--text">
+                <v-card-title primary-title>
+                  <div class="headline">What's a good shirt to wear over the EmBrace?</div>
+                  <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Posted by Amy </div>
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn flat dark>COMMENT</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+            <v-flex xs12>
+              <v-card color="cyan darken-2" class="white--text">
+                <v-card-title primary-title>
+                  <div class="headline">Does anyone know how to check the battery?</div>
+                  <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Posted by Doug </div>
+                </v-card-title>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ message }}</p>
+                <v-card-actions>
+                  <v-btn flat dark>COMMENT</v-btn>
+                  <input type="text" v-model="message">
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+            <v-flex xs12>
+              <v-card color="purple" class="white--text">
+                <v-card-title primary-title>
+                  <div class="headline">Does anyone want to meet up in PA?</div>
+                  <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Posted by Tiff </div>
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn flat dark>COMMENT</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card>
+    </div>
+  </v-app>
+</div>
+ <script src="https://unpkg.com/vue/dist/vue.js"></script>
+ <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+ <script src="https://use.fontawesome.com/73c8e2621d.js"></script>
+
+ <script>
+   new Vue({
+    el: '#app',
+    			    data: {
+                    message: ''
+                    }
+    }
+  )
+
+		</script>
+ 
+</body>
+</html>

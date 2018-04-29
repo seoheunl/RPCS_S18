@@ -1,0 +1,99 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+      <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+      <div style="right:30px"><a href="javascript:history.back()"; style="color:black; margin-left: 20px"><i class="material-icons">arrow_back</i></a></div>
+      <div class="row">
+        <div class="card" height = auto>
+          <div class="card-image">
+            <img src="images/header2.png">
+             <a class="btn-floating halfway-fab btn-large waves-effect waves-light red"><img class="circle responsive-img" src = "images/1.jpg"></a>
+             <span class = "card-title"><h2>Dean Dijour</h2></span>
+          </div>
+          <div class="card-content">
+            <p><h4>5,400 points</h4></p>
+                <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                <li class="tab"><a href="#test4">Friends</a></li>
+                <li class="tab"><a class="active" href="#test5">Badges</a></li>
+                <li class="tab"><a href="#test6">Posts</a></li>
+                </ul>
+                </div>
+                <div class="card-content grey lighten-4">
+                <div id="test4"><img class = "circle responsive-img" src="images/head.jpg"></div>
+                <div id="test5">
+                  <img class = "responsive-img" src="images/badge1.png">
+                  <img class = "responsive-img" src="images/badge2.png">
+                  <img class = "responsive-img" src="images/badge3.png">
+                </div>
+                <div id="test6">
+                  <div id="app">
+                      <v-app id="inspire">
+                          <v-card>
+                            <v-container
+                              fluid
+                              style="min-height: 0;"
+                              grid-list-lg
+                            >
+                              <v-layout row wrap>
+                                <v-flex xs12>
+                                  <v-card color="green darken-2" class="white--text">
+                                    <v-card-title primary-title>
+                                      <div class="headline"><p>{{ message }}</p></div>
+                                      <input type="text" v-model="message"> 
+                                    </v-card-title>
+                                    <v-card-actions>
+                                      <v-btn flat dark>POST</v-btn>
+                                    </v-card-actions>
+                                  </v-card>
+                                </v-flex>
+                                <v-flex xs12>
+                                  <v-card color="green darken-2" class="white--text">
+                                    <v-card-title primary-title>
+                                      <div class="headline">Wow, I love this app so much!</div>
+                                      <br>
+                                      <div>Posted 4/25/2018 </div>
+                                    </v-card-title>
+                                  </v-card>
+                                </v-flex>
+                              </v-layout>
+                            </v-container>
+                          </v-card>
+                        </div>
+                      </v-app>
+                    </div>
+                </div>
+                </div>
+          </div>
+        </div>
+      </div>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+       <script src="https://unpkg.com/vue/dist/vue.js"></script>
+       <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+       <script src="https://use.fontawesome.com/73c8e2621d.js"></script>
+      
+       <script>
+         new Vue({
+          el: '#app',
+          			    data: {
+                          message: ''
+                          }
+          }
+        )
+      
+      		</script>
+    </body>
+  </html>
+  
+  
+  

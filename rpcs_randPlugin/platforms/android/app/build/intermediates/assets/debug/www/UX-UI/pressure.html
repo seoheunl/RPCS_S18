@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+     
+      <span><p id="pressure"></p></span>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+      <script src="https://mysqljs.com/mysql.js"></script>
+      <br>
+      <div style="right:30px"><a href="javascript:history.back()"; style="color:black; margin-left: 20px"><i class="material-icons">arrow_back</i></a></div>
+    </body>
+    <div>
+      <h1 align="center">Pressure</h1>
+    </div>
+
+<!--     <div class="ct-chart ct-perfect-fourth"></div>
+    <script>var data = {
+  // A labels array that can contain any sort of values
+  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+  // Our series array that contains series objects or in this case series data arrays
+  series: [
+    [5, 2, 4, 2, 0]
+  ]
+};
+
+// Create a new line chart object where as first parameter we pass in a selector
+// that is resolving to our chart container element. The Second parameter
+// is the actual data object.
+new Chartist.Line('.ct-chart', data);</script> -->
+
+
+<div class="card">
+    <div class="card-content">
+      <p>Click around for pressure sensor details</p>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a class="active" href="#Front">Front</a></li>
+        <li class="tab"><a class="active" href="#Back">Back</a></li>
+      </ul>
+    </div>
+    <div class="card-content grey lighten-4"></div>
+        <div id="Front"> 
+        <center>
+        <table id="frontColorTable" style="width:100%; border: 3px solid black;">
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+        </table>
+
+        
+
+        
+        </center>         
+        </div>
+        
+        
+    <div id="Back"> 
+        <center>
+        <table id="backColorTable" style="width:100%; border: 3px solid black;">
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+            <tr>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+                <td class="center" style="border: 3px solid blue; width:100px; height:100px"></td>
+            </tr>
+        </table>
+
+        
+
+        
+        </center>         
+        </div>
+        
+        
+        
+        
+        
+    </div>
+  </div>
+
+
+  </html>
+
+
+
+<script>
+  var example = "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,100,100,100,100";
+  var frontTableArray_global = [];
+  var backTableArray_global = [];
+
+
+  //parse pressure string which we got from data base to frontTable array and backTable array for ui to display
+  //frontTable array and backTable array are global variable
+  function parsePressureString (pressureString){
+    var pressureStringSplit = pressureString.split(",");
+    var frontTableArray = [];
+    var backTableArray = [];
+    var btLeft_temp = [];
+    var btRight_temp = [];
+    for (var i = 0; i < pressureStringSplit.length; i++){
+      var indexInLine = i%15;
+      if (0 <= indexInLine && indexInLine <= 2){
+        btLeft_temp.push(pressureStringSplit[i]);
+        // backTableArrayLeft.push(pressureStringSplit[i]);
+      }else if (3 <= indexInLine && indexInLine <= 10){
+        frontTableArray.push(pressureStringSplit[i]);
+      }else {
+        btRight_temp.push(pressureStringSplit[i]);
+        if (indexInLine == 14){
+          var concattedBtArray = btRight_temp.concat(btLeft_temp);
+          // console.log(concattedBtArray);
+          // console.log(backTableArray.concat(concattedBtArray));
+          if ( backTableArray instanceof Array )
+             backTableArray = backTableArray.concat( concattedBtArray );
+          btLeft_temp = [];
+          btRight_temp = [];
+        }
+      }
+    }
+    frontTableArray_global = frontTableArray;
+    backTableArray_global = backTableArray;
+    console.log("frontTableArray " + frontTableArray.length);
+    console.log("backTableArray " + backTableArray.length);
+  }
+
+  //fill in color to all tr according to the pressure data
+  function fillInColor (){
+    var t = document.getElementById("frontColorTable");
+    var trs = t.getElementsByTagName("td");
+    for (var i = 0 ; i < trs.length; i++){
+      trs[i].style.backgroundColor = getColor(frontTableArray_global[i]);
+    }
+    var p = document.getElementById("backColorTable");
+    var prs = p.getElementsByTagName("td");
+    for (var j = 0 ; j < prs.length; j++){
+      prs[j].style.backgroundColor = getColor(backTableArray_global[j]);
+    }
+
+  }
+
+  //generate color code from a pressure
+  function getColor(value){
+      //value from 0 to 1
+      value = (value/100)
+      var hue=((1-value)*120).toString(10);
+      return ["hsl(",hue,",100%,50%)"].join("");
+  }
+
+  function refreshPressureMap(){
+    MySql.Execute(
+      "128.2.136.44",
+      "rpcs2018",
+      "rpcsbackend2018",
+      "Brace_DB",
+      "select * from patienttable order by id ASC",
+      function (data) {
+        var pressureResult = data.Result[data.Result.length - 1].pressure;
+        parsePressureString(pressureResult);
+        fillInColor();
+        // console.log("data " + data);
+        // parsePressureString(data);
+    });
+  }
+  function myFunction() {
+    location.reload();
+  }
+  refreshPressureMap();
+  // setInterval(refreshPressureMap, 500);
+  // parsePressureString(example);
+</script>

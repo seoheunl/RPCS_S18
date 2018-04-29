@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/adrian/myCordova/rpcs_randPlugin/rpcs_randPlugin/platforms/android/app/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/Users/adrian/myCordova/rpcs_randPlugin/rpcs_randPlugin/platforms/android/app/src/debug/shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/chencheng/Desktop/39648 RPCS/RPCS_S18/rpcs_randPlugin/platforms/android/app/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/Users/chencheng/Desktop/39648 RPCS/RPCS_S18/rpcs_randPlugin/platforms/android/app/src/debug/shaders"/></dataSet></merger>
