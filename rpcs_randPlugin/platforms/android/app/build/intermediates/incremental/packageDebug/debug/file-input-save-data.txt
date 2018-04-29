@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Apr 29 14:46:09 EDT 2018
+#Sun Apr 29 17:30:12 EDT 2018
 76.base=/Users/chencheng/Desktop/39648 RPCS/RPCS_S18/rpcs_randPlugin/platforms/android/app/build/intermediates/assets/debug
 5.base=/Users/chencheng/Desktop/39648 RPCS/RPCS_S18/rpcs_randPlugin/platforms/android/app/build/intermediates/res/debug/resources-debug.ap_
 86.base=/Users/chencheng/Desktop/39648 RPCS/RPCS_S18/rpcs_randPlugin/platforms/android/app/build/intermediates/assets/debug

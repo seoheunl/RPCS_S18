@@ -74,19 +74,19 @@ function postRequest (){
 // The function is used for standard SQL database datetime format (subject to change)
 // "2018-04-25T15:03:51"
 function getDateTime() {
-    var now     = new Date(); 
+    var now     = new Date();
     var year    = now.getFullYear();
-    var month   = now.getMonth()+1; 
+    var month   = now.getMonth()+1;
     var day     = now.getDate();
     var hour    = now.getHours();
     var minute  = now.getMinutes();
-    var second  = now.getSeconds(); 
+    var second  = now.getSeconds();
     if(month.toString().length == 1) {
         var month = '0'+month;
     }
     if(day.toString().length == 1) {
         var day = '0'+day;
-    }   
+    }
     if(hour.toString().length == 1) {
         var hour = '0'+hour;
     }
@@ -95,8 +95,8 @@ function getDateTime() {
     }
     if(second.toString().length == 1) {
         var second = '0'+second;
-    }   
-    var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;   
+    }
+    var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;
     return dateTime;
 }
 
@@ -136,7 +136,7 @@ var app = {
         function startScanning (){
              var params2 = {
               "services": [
-                
+
               ],
               "allowDuplicates": false,
               "scanMode": bluetoothle.SCAN_MODE_LOW_LATENCY,
@@ -219,6 +219,9 @@ var app = {
                                                 }
                                                 resultJson.p = pressureString_converted;
                                                 console.log("subscribe success " + s.status + " in json: " + resultJson.p);
+                                                if(resultJson.a > 40 || resultJson.a < -40){
+                                                  alert.log("Angle needs to be adjusted!")
+                                                }
                                                 insertDataMysql(resultJson.t, resultJson.h, resultJson.a, 1, resultJson.p);
                                             }
                                             firstJson = false;
@@ -249,7 +252,7 @@ var app = {
             });
             bluetoothle.requestPermission(function(s){
                 alert("request permission success " + s.requestPermission);
-                
+
             }, function(e){
                 console.log("request permission failed " + e.requestPermission);
             });
