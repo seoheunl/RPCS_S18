@@ -20,7 +20,7 @@
       <div style="right:30px"><a href="javascript:history.back()"; style="color:black; margin-left: 20px"><i class="material-icons">arrow_back</i></a></div>
     </body>
     <div>
-    	<h1 align="center">Temperature</h1>
+    	<h1 align="center">Posture Angle</h1>
     </div>
 
 <!--     <div class="ct-chart ct-perfect-fourth"></div>
@@ -41,7 +41,7 @@ new Chartist.Line('.ct-chart', data);</script> -->
 
 <div class="card">
     <div class="card-content">
-      <p>Click around for temperature sensor details</p>
+      <p>Posture Angle</p>
     </div>
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width">
@@ -51,42 +51,23 @@ new Chartist.Line('.ct-chart', data);</script> -->
     <div class="card-content grey lighten-4">
       <div id="test4">
 		    <div class="ct-chart ct-perfect-fourth"></div>
-        <script src="https://mysqljs.com/mysql.js"></script>
-        <script>
+		    <script>var data = {
+		  // A labels array that can contain any sort of values
+		  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+		  // Our series array that contains series objects or in this case series data arrays
+		  series: [
+		    [5, 2, 4, 2, 0]
+		  ]
+		};
 
-          var time = [];
-          var temperature = [];
-
-          MySql.Execute(
-            "128.2.136.44",
-            "rpcs2018",
-            "rpcsbackend2018",
-            "Brace_DB",
-            "select time, temperature from patienttable;",
-
-            function (data) {
-              for (var i = 0; i < data.Result.length; i++){
-                time.push(data.Result[i].time);
-                temperature.push(data.Result[i].temperature);
-              }
-              console.log(time)
-              console.log(temperature)
-          });
-
-          var data = {
-      		  // A labels array that can contain any sort of values
-      		  labels: time,
-      		  // Our series array that contains series objects or in this case series data arrays
-      		  series: [
-      		    temperature
-      		  ]
-      		};
-
-      		// Create a new line chart object where as first parameter we pass in a selector
-      		// that is resolving to our chart container element. The Second parameter
-      		// is the actual data object.
-      		new Chartist.Line('.ct-chart', data);</script>     	
+		// Create a new line chart object where as first parameter we pass in a selector
+		// that is resolving to our chart container element. The Second parameter
+		// is the actual data object.
+		new Chartist.Line('.ct-chart', data);</script>      	
       </div>
     </div>
   </div>
-</html>
+
+
+
+  </html>
