@@ -1,6 +1,21 @@
 {
     "logs": [
         {
+            "outputFile": "/Users/chencheng/Desktop/39648 RPCS/RPCS_S18/rpcs_randPlugin/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "/Users/chencheng/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/abe91af1cd63a9756eabd058e0784e59/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,121,182,248",
+                        "endColumns": "65,60,65,66",
+                        "endOffsets": "116,177,243,310"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/adrian/myCordova/rpcs_randPlugin/rpcs_randPlugin/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
