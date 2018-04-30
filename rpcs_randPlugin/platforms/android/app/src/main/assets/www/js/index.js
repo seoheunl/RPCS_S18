@@ -26,51 +26,11 @@ var blefruitAddress = "E4:B5:55:89:9A:A8"; //sensor team
 var uartServiceUuid;
 var uartCharacteristicUuid;
 var readParams;
-
+var postureGood = true;
 
 var connectParams = {
     "address": blefruitAddress
 };
-
-function postRequest (){
-    $.ajax({
-        type: "POST",
-        url: "http://httpbin.org/post",
-        // The key needs to match your method's input parameter (case-sensitive).
-        data: JSON.stringify({
-          name: "Donald Duck",
-          city: "Duckburg"
-        }),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function(data){alert(data.json.name);},
-        failure: function(errMsg) {
-            alert(errMsg);
-        }
-    });
-}
-
-/*function insertDataMysql(){
-    //it's a dummy data
-    // var today = Date.now();
-    alert("insert to mysql");
-    var today = getDateTime();
-    var mysqlCommand = "INSERT INTO temperaturetable (time, temperature) VALUES (" + today + ", 300);";
-    MySql.Execute(
-        "128.2.136.44",
-        "rpcs2018",
-        "rpcsbackend2018",
-        "Brace_DB",
-        mysqlCommand
-        // "show tables;",
-        ,
-        function (data) {
-            alert(JSON.stringify(data,null,2));
-            // document.getElementById("output").innerHTML = JSON.stringify(data,null,2);
-        }
-    );
-}
-*/
 // The function is used for standard SQL database datetime format (subject to change)
 // "2018-04-25T15:03:51"
 function getDateTime() {
@@ -113,6 +73,25 @@ function disconnect(){
     }, connectParams);
 }
 
+function checkPosture(checkPoint){
+    if ((checkPoint >= 40 || checkPoint <= -40) && postureGood){
+        postureGood = false;
+        cordova.plugins.notification.local.schedule({
+          title: 'RPCS',
+          text: 'Posture Shoud Be Adjusted!!',
+          foreground: true
+        })
+        // alert("Posture Shoud Be Adjusted!!");
+    }else if (!(checkPoint >= 40 || checkPoint <= -40) && !postureGood){
+        postureGood = true;
+        cordova.plugins.notification.local.schedule({
+          title: 'RPCS',
+          text: 'Posture corrected!!',
+          foreground: true
+        })
+    }
+}
+
 
 var app = {
     // Application Constructor
@@ -125,37 +104,11 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        this.receivedEvent('deviceready');
         // postRequest();
         var params = {
           "request": true,
           "statusReceiver": false,
           "restoreKey" : "bluetoothleplugin"
-        }
-
-        function startScanning (){
-             var params2 = {
-              "services": [
-
-              ],
-              "allowDuplicates": false,
-              "scanMode": bluetoothle.SCAN_MODE_LOW_LATENCY,
-              "matchMode": bluetoothle.MATCH_MODE_AGGRESSIVE,
-              "matchNum": bluetoothle.MATCH_NUM_MAX_ADVERTISEMENT,
-              "callbackType": bluetoothle.CALLBACK_TYPE_ALL_MATCHES,
-            }
-            bluetoothle.startScan(function(s){
-                if (s.status === "scanStarted"){
-                    alert("scanStarted");
-                }else if (s.status === "scanResult"){
-                    if (s.address == blefruitAddress){
-                        alert("got blefruit " + s.name);
-                    }
-                }
-            }, function(e){
-                alert("error " + e);
-                connection.end();
-            }, params2);
         }
 
         bluetoothle.initialize(function(status){
@@ -219,9 +172,7 @@ var app = {
                                                 }
                                                 resultJson.p = pressureString_converted;
                                                 console.log("subscribe success " + s.status + " in json: " + resultJson.p);
-                                                if(resultJson.a > 40 || resultJson.a < -40){
-                                                  alert.log("Angle needs to be adjusted!")
-                                                }
+                                                checkPosture(resultJson.a);
                                                 insertDataMysql(resultJson.t, resultJson.h, resultJson.a, 1, resultJson.p);
                                             }
                                             firstJson = false;

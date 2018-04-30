@@ -15,7 +15,7 @@
 <div class="normal">
   <div class="left-background"></div>
   <nav class="" role="navigation">
-      <a href="#"" data-activates="nav-mobile" class="nav_class"><i class="material-icons material-icons-size">menu</i></a>
+      <a href="#" data-activates="nav-mobile" class="nav_class"><i class="material-icons material-icons-size">menu</i></a>
   </nav>
   <div class="left-menu">
     <ul>
@@ -48,16 +48,34 @@
   <script src="js/init.js"></script>
   <script src="https://mysqljs.com/mysql.js"></script>
   <script>
+    var postureGood = true;
     MySql.Execute(
         "128.2.136.44",
         "rpcs2018",
         "rpcsbackend2018",
         "Brace_DB",
-        "select * from patienttable order by id DESC limit 1",
+        "select * from patienttable order by id ASC",
         function (data) {
-          document.getElementById("temperature").innerHTML = data.Result[0].temperature;
-          document.getElementById("angle").innerHTML = data.Result[0].angle + "°";
+          document.getElementById("temperature").innerHTML = data.Result[data.Result.length - 1].temperature;
+          document.getElementById("angle").innerHTML = data.Result[data.Result.length - 1].angle + "°";
+          var checkPoint = data.Result[data.Result.length - 1].angle;
+          CheckAngle(checkPoint);
         });
+
+
+        function CheckAngle(checkPoint){
+          if (checkPoint >= 40 || checkPoint <= -40 && postureGood){
+            postureGood = false;
+            cordova.plugins.notification.local.schedule({
+              title: 'RPCS',
+              text: 'Posture Shoud Be Adjusted!!',
+              foreground: true
+            })
+            // alert("Posture Shoud Be Adjusted!!");
+          }else{
+            postureGood = true;
+          }
+        }
   </script>
   <script>
     function myFunction() {
